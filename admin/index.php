@@ -37,7 +37,7 @@
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
+    <div class="sidebar" data-color="blue" data-image="assets/img/sidebar-5.jpg">
 
     <!--
 
@@ -48,8 +48,8 @@
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text">
-                    E-BUKU #1 PTI
+                <a href="http://www.keyzex.com" class="simple-text">
+                    R4HA BOOK
                 </a>
             </div>
 
@@ -102,7 +102,6 @@
                             elseif($_GET['halaman']=='detail'){
                                 include 'detail.php';
                             }
-
                         }
                         else{
                             include 'greetings.php';
@@ -136,9 +135,6 @@
 
     <!--  Notifications Plugin    -->
     <script src="assets/js/bootstrap-notify.js"></script>
-
-    <!--  Google Maps Plugin    -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 	<script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
