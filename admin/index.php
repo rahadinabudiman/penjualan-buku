@@ -1,3 +1,6 @@
+<?php
+    include 'koneksi/koneksi.php'; // KONEKSI DATABASE
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -52,10 +55,9 @@
 
             <ul class="nav">
                 <li><a href="index.php"><i class="pe-7s-graph"></i><p>Dashboard</p></a></li>
-                <li><a href="index.php"><i class="pe-7s-graph"></i><p>Dashboard</p></a></li>
-                <li><a href="index.php"><i class="pe-7s-graph"></i><p>Dashboard</p></a></li>
-                <li><a href="index.php"><i class="pe-7s-graph"></i><p>Dashboard</p></a></li>
-                <li><a href="index.php"><i class="pe-7s-graph"></i><p>Dashboard</p></a></li>
+                <li><a href="index.php?halaman=buku"><i class="pe-7s-graph"></i><p>Daftar Buku</p></a></li>
+                <li><a href="index.php?halaman=pembelian"><i class="pe-7s-graph"></i><p>Pembelian</p></a></li>
+                <li><a href="index.php?halaman=pelanggan"><i class="pe-7s-graph"></i><p>Pelanggan</p></a></li>
             </ul>
     	</div>
     </div>
@@ -74,11 +76,7 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#">
-                                <p>Log out</p>
-                            </a>
-                        </li>
+                        <li><a href="index.php?halaman=logout"><p>Log out</p></a></li>
 						<li class="separator hidden-lg"></li>
                     </ul>
                 </div>
@@ -88,8 +86,29 @@
 
         <div class="content">
             <div class="container-fluid">
-                <h2>Raha Ganteng</h2>
-                
+                    <?php 
+                        if(isset($_GET['halaman'])){
+                            // KATEGORI
+                            if($_GET['halaman']=='buku'){
+                                include 'buku.php';
+                            }
+                            elseif($_GET['halaman']=='pembelian'){
+                                include 'pembelian.php';
+                            }
+                            elseif($_GET['halaman']=='pelanggan'){
+                                include 'pelanggan.php';
+                            }
+                            // AKSI
+                            elseif($_GET['halaman']=='detail'){
+                                include 'detail.php';
+                            }
+
+                        }
+                        else{
+                            include 'greetings.php';
+                        }
+
+                    ?>
             </div>
         </div>
 
