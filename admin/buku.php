@@ -1,4 +1,5 @@
 <h2>Ini Buku.</h2>
+<a href="index.php?halaman=tambahbuku" class="btn btn-info">Tambah Buku</a>
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -8,6 +9,7 @@
             <th>Penerbit</th>
             <th>Genre</th>
             <th>Tahun</th>
+            <th>Sinopsis</th>
             <th>Foto Buku</th>
             <th>AKSI</th>
         </tr>
@@ -25,6 +27,7 @@
             <td><?php echo $pecah['penerbit_buku']; ?></td>
             <td><?php echo $pecah['genre']; ?></td>
             <td><?php echo $pecah['tahun']; ?></td>
+            <td><?php echo $pecah['sinopsis_buku'];?></td>
             <td><?php echo $pecah['foto_buku']; ?></td>
             <td>
                 <a href="" class="btn btn-danger">HAPUS</a>

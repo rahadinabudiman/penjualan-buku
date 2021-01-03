@@ -13,6 +13,8 @@
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
+    <!-- Date Picker CSS -->
+
 
     <!-- Bootstrap core CSS     -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -26,7 +28,6 @@
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="assets/css/demo.css" rel="stylesheet" />
-
 
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -100,6 +101,9 @@
                                 include 'pelanggan.php';
                             }
                             // AKSI
+                            elseif($_GET['halaman']=='tambahbuku'){
+                                include 'tambah_buku.php';
+                            }
                             elseif($_GET['halaman']=='detail'){
                                 include 'detail.php';
                             }
@@ -123,8 +127,6 @@
 
     </div>
 </div>
-
-
 </body>
 
     <!--   Core JS Files   -->
@@ -149,6 +151,6 @@
         	demo.initChartist();
 
     	});
-	</script>
+    </script>
 
 </html>
