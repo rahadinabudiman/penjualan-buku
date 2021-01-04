@@ -107,6 +107,9 @@
                             elseif($_GET['halaman']=='detail'){
                                 include 'detail.php';
                             }
+                            elseif($_GET['halaman']=='hapusbuku'){
+                                include 'hapus_buku.php';
+                            }
                         }
                         else{
                             include 'greetings.php';

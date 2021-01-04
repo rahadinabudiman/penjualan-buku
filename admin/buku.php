@@ -30,7 +30,7 @@
             <td><?php echo $pecah['sinopsis_buku'];?></td>
             <td><img src="foto_buku/<?php echo $pecah['foto_buku']; ?>" width="100"></td>
             <td>
-                <a href="" class="btn btn-danger">HAPUS</a>
+                <a href="index.php?halaman=hapusbuku&id=<?php echo $pecah['id_buku'];?>" class="btn btn-danger">HAPUS</a>
                 <a href="" class="btn btn-warning">EDIT</a>
             </td>
         </tr>
