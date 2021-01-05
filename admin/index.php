@@ -1,5 +1,11 @@
 <?php
+    session_start();
     include 'koneksi/koneksi.php'; // KONEKSI DATABASE
+
+    if(!isset($_SESSION['admin'])){
+        header('location:login.php');
+        exit();
+    }
 ?>
 <!doctype html>
 <html lang="en">
@@ -112,6 +118,9 @@
                             }
                             elseif($_GET['halaman']=='ubahbuku'){
                                 include 'ubah_buku.php';
+                            }
+                            elseif($_GET['halaman']=='logout'){
+                                include 'logout.php';
                             }
                         }
                         else{
