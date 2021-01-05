@@ -26,7 +26,7 @@
     <input type="number" class="form-control" name="harga">
 </div>
 <div class="form-group">
-    <label>Harga Buku</label>
+    <label>Tahun Buku</label>
     <input type="date" class="form-control" name="tahun">
 </div>
 <div class="form-group">
