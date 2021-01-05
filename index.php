@@ -124,7 +124,7 @@
                               
 								<div class="shopping-item">
 									<div class="dropdown-cart-header">
-										<span>2 Items</span>
+										<span>List Items</span>
 										<a href="keranjang.php">View Cart</a>
                                     </div>
                                     <?php
@@ -146,7 +146,7 @@
                                     ?>
 									<ul class="shopping-list">
 										<li>
-											<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
+											<a href="hapus_keranjang.php?id=<?php echo $id_buku; ?>" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
 											<a class="cart-img" href="#"><img src="admin/foto_buku/<?php echo $databuku['foto_buku']; ?>" alt="#"></a>
 											<h4><a href="#"><?php echo $databuku['judul_buku']; ?></a></h4>
 											<p class="quantity"><?php echo $jumlah ?>x - <span class="amount"><?php echo number_format($totalharga); ?></span></p>
@@ -158,7 +158,11 @@
 									<div class="bottom">
 										<div class="total">
                                             <span>Total</span>
-											<span class="total-amount">Rp <?php echo number_format($totalbelanja); ?></span>
+                                            <?php if(empty($_SESSION['keranjang']) OR !isset($_SESSION['keranjang'])): ?>
+                                            <span class="total-amount">Rp X</span>
+                                            <?php else: ?>
+                                            <span class="total-amount">Rp <?php echo number_format($totalbelanja); ?></span>
+                                            <?php endif ?>
                                         </div>
 										<a href="checkout.html" class="btn animate">Checkout</a>
 									</div>

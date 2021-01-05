@@ -302,7 +302,7 @@ session_start();
 										<li class="last">Total Belanja<span>Rp <?php echo number_format($totalbelanja); ?></span></li>
 									</ul>
 									<div class="button5">
-										<a href="#" class="btn">Checkout</a>
+										<a href="checkout.php" class="btn">Checkout</a>
 										<a href="index.php" class="btn">Continue shopping</a>
 									</div>
 								</div>
