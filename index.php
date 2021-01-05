@@ -114,34 +114,37 @@
 							</div>
 							<div class="sinlge-bar shopping">
 								<a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
-								<!-- Shopping Item -->
+                                <!-- Shopping Item -->
+                              
 								<div class="shopping-item">
 									<div class="dropdown-cart-header">
 										<span>2 Items</span>
 										<a href="#">View Cart</a>
-									</div>
+                                    </div>
+                                    <?php
+                                        foreach ($_SESSION['keranjang'] as $id_buku => $jumlah):
+                            
+                                            $data = $koneksi->query("SELECT * FROM buku WHERE id_buku='$id_buku'");
+                                            $databuku = $data->fetch_assoc();
+                                            $totalharga = $databuku['harga_buku']*$jumlah;
+                                    ?>
 									<ul class="shopping-list">
 										<li>
 											<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-											<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-											<h4><a href="#">Woman Ring</a></h4>
-											<p class="quantity">1x - <span class="amount">$99.00</span></p>
-										</li>
-										<li>
-											<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-											<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-											<h4><a href="#">Woman Necklace</a></h4>
-											<p class="quantity">1x - <span class="amount">$35.00</span></p>
-										</li>
-									</ul>
+											<a class="cart-img" href="#"><img src="admin/foto_buku/<?php echo $databuku['foto_buku']; ?>" alt="#"></a>
+											<h4><a href="#"><?php echo $databuku['judul_buku']; ?></a></h4>
+											<p class="quantity"><?php echo $jumlah ?>x - <span class="amount"><?php echo number_format($totalharga); ?></span></p>
+                                        </li>
+                                        <?php endforeach ?>
+                                    </ul>
 									<div class="bottom">
 										<div class="total">
-											<span>Total</span>
-											<span class="total-amount">$134.00</span>
-										</div>
+                                            <span>Total</span>
+											<span class="total-amount">Rp SEKIAN</span>
+                                        </div>
 										<a href="checkout.html" class="btn animate">Checkout</a>
 									</div>
-								</div>
+                                </div>
 								<!--/ End Shopping Item -->
 							</div>
 						</div>
@@ -377,9 +380,8 @@
 														</a>
 														<div class="button-head">
 															<div class="product-action">
-																<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
 																<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-																<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+                                                                <a title="Buy" href="beli.php?id=<?php echo $databuku['id_buku']; ?>"><i class="ti-money"></i><span>Beli</span></a>
 															</div>
 															<div class="product-action-2">
 																<a title="Add to cart" href="#">Add to cart</a>
@@ -389,7 +391,7 @@
 													<div class="product-content">
 														<h3><a href="product-details.html"><?php echo $databuku['judul_buku']; ?></a></h3>
 														<div class="product-price">
-															<span><?php echo $databuku['harga_buku']; ?></span>
+															<span>Rp <?php echo number_format($databuku['harga_buku']); ?></span>
 														</div>
 													</div>
 												</div>
