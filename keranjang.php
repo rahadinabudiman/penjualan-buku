@@ -108,12 +108,15 @@ session_start();
 						<div class="col-lg-2 col-md-3 col-12">
 							<div class="right-bar">
 								<!-- Search Form -->
-								<div class="sinlge-bar">
-									<a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-								</div>
-								<div class="sinlge-bar">
-									<a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
-								</div>
+                                    <?php if(isset($_SESSION['pelanggan'])): ?>
+                                    <div class="sinlge-bar">
+                                    <a href="logout.php" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true">Logout</i></a>
+                                    </div>
+                                    <?php else: ?>
+                                        <div class="sinlge-bar">
+                                        <a href="login.php" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true">Login</i></a>
+                                    </div>
+                                    <?php endif ?>
 								<div class="sinlge-bar shopping">
 									<a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
 									<!-- Shopping Item -->
@@ -163,7 +166,7 @@ session_start();
 										<div class="navbar-collapse">	
 											<div class="nav-inner">	
 												<ul class="nav main-menu menu navbar-nav">
-													<li class="active"><a href="#">Home</a></li>
+													<li class="active"><a href="index.php">Home</a></li>
 													<li><a href="#">Product</a></li>												
 													<li><a href="#">Service</a></li>
 													<li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
@@ -241,7 +244,7 @@ session_start();
 							<tr>
 								<td class="image" data-title="No"><img src="admin/foto_buku/<?php echo $databuku['foto_buku']; ?>" alt="#"></td>
 								<td class="product-des" data-title="Description">
-									<p class="product-name"><?php echo $databuku['judul_buku']; ?></p>
+									<p class="product-name"><b><?php echo $databuku['judul_buku']; ?></b></p>
 									<p class="product-des"><?php  echo $databuku['sinopsis_buku'];?></p>
 								</td>
 								<td class="price" data-title="Price"><span>Rp <?php echo number_format($databuku['harga_buku']); ?> </span></td>
@@ -262,7 +265,7 @@ session_start();
 									<!--/ End Input Order -->
 								</td>
 								<td class="total-amount" data-title="Total"><span>Rp <?php echo number_format($totalharga) ?></span></td>
-								<td class="action" data-title="Remove"><a href="#"><i class="ti-trash remove-icon"></i></a></td>
+								<td class="action" data-title="Remove"><a href="hapus_keranjang.php?id=<?php echo $id_buku; ?>"><i class="ti-trash remove-icon"></i></a></td>
                             </tr>
                             <?php endforeach ?>
 						</tbody>

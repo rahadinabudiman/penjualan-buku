@@ -8,6 +8,5 @@
     else{
         $_SESSION['keranjang'][$id_buku] = 1;
     }
-    echo "<script>alert('Berhasil ditambahkan ke Keranjang');</script>";
     echo "<script>location='keranjang.php'</script>";
 ?>

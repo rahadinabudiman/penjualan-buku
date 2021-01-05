@@ -108,20 +108,35 @@
 					</div>
 					<div class="col-lg-2 col-md-3 col-12">
 						<div class="right-bar">
-							<!-- Search Form -->
-							<div class="sinlge-bar">
-								<a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"> Login</i></a>
+                            <!-- Search Form -->
+                            <?php if(isset($_SESSION['pelanggan'])): ?>
+                                <div class="sinlge-bar">
+								<a href="logout.php" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true">Logout</i></a>
 							</div>
+                            <?php else: ?>
+                                <div class="sinlge-bar">
+								<a href="login.php" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true">Login</i></a>
+							</div>
+                            <?php endif ?>
 							<div class="sinlge-bar shopping">
-								<a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
+								<a href="keranjang.php" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
                                 <!-- Shopping Item -->
                               
 								<div class="shopping-item">
 									<div class="dropdown-cart-header">
 										<span>2 Items</span>
-										<a href="#">View Cart</a>
+										<a href="keranjang.php">View Cart</a>
                                     </div>
                                     <?php
+                                        if(empty($_SESSION['keranjang']) OR !isset($_SESSION['keranjang'])):
+                                    ?>
+                                    <ul class="shopping-list">
+										<li>
+											<h2>Jajan Dulu bos</h2>
+                                        </li>
+                                    </ul>
+                                    <?php
+                                    else:
                                         foreach ($_SESSION['keranjang'] as $id_buku => $jumlah):
                             
                                             $data = $koneksi->query("SELECT * FROM buku WHERE id_buku='$id_buku'");
@@ -136,6 +151,7 @@
 											<p class="quantity"><?php echo $jumlah ?>x - <span class="amount"><?php echo number_format($totalharga); ?></span></p>
                                         </li>
                                         <?php endforeach ?>
+                                        <?php endif ?>
                                     </ul>
 									<div class="bottom">
 										<div class="total">
