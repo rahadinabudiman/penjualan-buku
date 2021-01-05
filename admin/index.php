@@ -110,6 +110,9 @@
                             elseif($_GET['halaman']=='hapusbuku'){
                                 include 'hapus_buku.php';
                             }
+                            elseif($_GET['halaman']=='ubahbuku'){
+                                include 'ubah_buku.php';
+                            }
                         }
                         else{
                             include 'greetings.php';

@@ -31,7 +31,7 @@
             <td><img src="foto_buku/<?php echo $pecah['foto_buku']; ?>" width="100"></td>
             <td>
                 <a href="index.php?halaman=hapusbuku&id=<?php echo $pecah['id_buku'];?>" class="btn btn-danger">HAPUS</a>
-                <a href="" class="btn btn-warning">EDIT</a>
+                <a href="index.php?halaman=ubahbuku&id=<?php echo $pecah['id_buku'];?>" class="btn btn-warning">EDIT</a>
             </td>
         </tr>
         <?php $no++ ?>
