@@ -137,6 +137,7 @@
                                     </ul>
                                     <?php
                                     else:
+                                        $totalbelanja = 0;
                                         foreach ($_SESSION['keranjang'] as $id_buku => $jumlah):
                             
                                             $data = $koneksi->query("SELECT * FROM buku WHERE id_buku='$id_buku'");
@@ -150,13 +151,14 @@
 											<h4><a href="#"><?php echo $databuku['judul_buku']; ?></a></h4>
 											<p class="quantity"><?php echo $jumlah ?>x - <span class="amount"><?php echo number_format($totalharga); ?></span></p>
                                         </li>
+                                        <?php $totalbelanja+=$totalharga; ?>
                                         <?php endforeach ?>
                                         <?php endif ?>
                                     </ul>
 									<div class="bottom">
 										<div class="total">
                                             <span>Total</span>
-											<span class="total-amount">Rp SEKIAN</span>
+											<span class="total-amount">Rp <?php echo number_format($totalbelanja); ?></span>
                                         </div>
 										<a href="checkout.html" class="btn animate">Checkout</a>
 									</div>

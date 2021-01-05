@@ -232,6 +232,7 @@ session_start();
 								<th class="text-center"><i class="ti-trash remove-icon"></i></th>
 							</tr>
                         </thead>
+                        <?php $totalbelanja = 0; ?>
                         <?php
                             foreach ($_SESSION['keranjang'] as $id_buku => $jumlah):
                             
@@ -267,6 +268,7 @@ session_start();
 								<td class="total-amount" data-title="Total"><span>Rp <?php echo number_format($totalharga) ?></span></td>
 								<td class="action" data-title="Remove"><a href="hapus_keranjang.php?id=<?php echo $id_buku; ?>"><i class="ti-trash remove-icon"></i></a></td>
                             </tr>
+                            <?php $totalbelanja+=$totalharga; ?>
                             <?php endforeach ?>
 						</tbody>
 					</table>
@@ -294,10 +296,10 @@ session_start();
 							<div class="col-lg-4 col-md-7 col-12">
 								<div class="right">
 									<ul>
-										<li>Cart Subtotal<span>$330.00</span></li>
+										<li>Total Harga<span>Rp <?php echo number_format($totalbelanja); ?></span></li>
 										<li>Shipping<span>Free</span></li>
 										<li>You Save<span>$20.00</span></li>
-										<li class="last">You Pay<span>$310.00</span></li>
+										<li class="last">Total Belanja<span>Rp <?php echo number_format($totalbelanja); ?></span></li>
 									</ul>
 									<div class="button5">
 										<a href="#" class="btn">Checkout</a>
