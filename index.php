@@ -397,8 +397,8 @@
 												<div class="single-product">
 													<div class="product-img">
 														<a href="product-details.html">
-															<img class="default-img" width="200" height="100" src="admin/foto_buku/<?php echo $databuku['foto_buku']; ?>">
-															<img class="hover-img"   width="200" height="100" src="admin/foto_buku/<?php echo $databuku['foto_buku']; ?>">
+															<img class="default-img" src="admin/foto_buku/<?php echo $databuku['foto_buku']; ?>">
+															<img class="hover-img" src="admin/foto_buku/<?php echo $databuku['foto_buku']; ?>">
 														</a>
 														<div class="button-head">
 															<div class="product-action">

@@ -35,14 +35,14 @@
 
 								<div class="form-group">
 									<label for="password">Password
+									<input id="password" type="password" class="form-control" name="password" required data-eye>
+								    <div class="invalid-feedback">
+								    	Password is required
+									</div>
 										<a href="forgot.html" class="float-right">
 											Forgot Password?
 										</a>
 									</label>
-									<input id="password" type="password" class="form-control" name="password" required data-eye>
-								    <div class="invalid-feedback">
-								    	Password is required
-							    	</div>
 								</div>
 
 								<div class="form-group">

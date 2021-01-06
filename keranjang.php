@@ -108,45 +108,64 @@ session_start();
 						<div class="col-lg-2 col-md-3 col-12">
 							<div class="right-bar">
 								<!-- Search Form -->
-                                    <?php if(isset($_SESSION['pelanggan'])): ?>
-                                    <div class="sinlge-bar">
-                                    <a href="logout.php" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true">Logout</i></a>
+								<?php if(isset($_SESSION['pelanggan'])): ?>
+                                <div class="sinlge-bar">
+								<a href="logout.php" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true">Logout</i></a>
+							</div>
+                            <?php else: ?>
+                                <div class="sinlge-bar">
+								<a href="login.php" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true">Login</i></a>
+							</div>
+                            <?php endif ?>
+							<div class="sinlge-bar shopping">
+								<a href="keranjang.php" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
+                                <!-- Shopping Item -->
+                              
+								<div class="shopping-item">
+									<div class="dropdown-cart-header">
+										<span>List Items</span>
+										<a href="keranjang.php">View Cart</a>
                                     </div>
-                                    <?php else: ?>
-                                        <div class="sinlge-bar">
-                                        <a href="login.php" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true">Login</i></a>
-                                    </div>
-                                    <?php endif ?>
-								<div class="sinlge-bar shopping">
-									<a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
-									<!-- Shopping Item -->
-									<div class="shopping-item">
-										<div class="dropdown-cart-header">
-											<span>2 Items</span>
-											<a href="#">View Cart</a>
-										</div>
-										<ul class="shopping-list">
-											<li>
-												<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-												<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-												<h4><a href="#">Woman Ring</a></h4>
-												<p class="quantity">1x - <span class="amount">$99.00</span></p>
-											</li>
-											<li>
-												<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-												<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-												<h4><a href="#">Woman Necklace</a></h4>
-												<p class="quantity">1x - <span class="amount">$35.00</span></p>
-											</li>
-										</ul>
-										<div class="bottom">
-											<div class="total">
-												<span>Total</span>
-												<span class="total-amount">$134.00</span>
-											</div>
-											<a href="checkout.html" class="btn animate">Checkout</a>
-										</div>
+                                    <?php
+                                        if(empty($_SESSION['keranjang']) OR !isset($_SESSION['keranjang'])):
+                                    ?>
+                                    <ul class="shopping-list">
+										<li>
+											<h2>Jajan Dulu bos</h2>
+                                        </li>
+                                    </ul>
+                                    <?php
+                                    else:
+                                        $totalbelanja = 0;
+                                        foreach ($_SESSION['keranjang'] as $id_buku => $jumlah):
+                            
+                                            $data = $koneksi->query("SELECT * FROM buku WHERE id_buku='$id_buku'");
+                                            $databuku = $data->fetch_assoc();
+                                            $totalharga = $databuku['harga_buku']*$jumlah;
+                                    ?>
+									<ul class="shopping-list">
+										<li>
+											<a href="hapus_keranjang.php?id=<?php echo $id_buku; ?>" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
+											<a class="cart-img" href="#"><img src="admin/foto_buku/<?php echo $databuku['foto_buku']; ?>" alt="#"></a>
+											<h4><a href="#"><?php echo $databuku['judul_buku']; ?></a></h4>
+											<p class="quantity"><?php echo $jumlah ?>x - <span class="amount"><?php echo number_format($totalharga); ?></span></p>
+                                        </li>
+                                        <?php $totalbelanja+=$totalharga; ?>
+                                        <?php endforeach ?>
+                                        <?php endif ?>
+                                    </ul>
+									<div class="bottom">
+										<div class="total">
+                                            <span>Total</span>
+                                            <?php if(empty($_SESSION['keranjang']) OR !isset($_SESSION['keranjang'])): ?>
+                                            <span class="total-amount">Rp X</span>
+                                            <?php else: ?>
+                                            <span class="total-amount">Rp <?php echo number_format($totalbelanja); ?></span>
+                                            <?php endif ?>
+                                        </div>
+										<a href="checkout.html" class="btn animate">Checkout</a>
 									</div>
+                                </div>
 									<!--/ End Shopping Item -->
 								</div>
 							</div>

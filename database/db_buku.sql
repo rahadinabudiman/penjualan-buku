@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 31 Des 2020 pada 07.15
+-- Waktu pembuatan: 06 Jan 2021 pada 04.43
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 7.4.13
 
@@ -34,6 +34,13 @@ CREATE TABLE `admin` (
   `nama_lengkap` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `admin`
+--
+
+INSERT INTO `admin` (`id_admin`, `username`, `password`, `nama_lengkap`) VALUES
+(1, 'rahaganteng', 'pakebanget', 'rahagantengbanget');
+
 -- --------------------------------------------------------
 
 --
@@ -48,15 +55,19 @@ CREATE TABLE `buku` (
   `tahun` date DEFAULT NULL,
   `genre` varchar(100) DEFAULT NULL,
   `foto_buku` varchar(100) NOT NULL,
-  `harga_buku` int(11) NOT NULL
+  `harga_buku` int(11) NOT NULL,
+  `sinopsis_buku` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `buku`
 --
 
-INSERT INTO `buku` (`id_buku`, `judul_buku`, `penulis_buku`, `penerbit_buku`, `tahun`, `genre`, `foto_buku`, `harga_buku`) VALUES
-(1, 'Orang-Orang Oetimu', 'Felix K. Nesi', 'Marjin Kiri', '2019-07-30', 'Novel', 'wassap.jpg', 110000);
+INSERT INTO `buku` (`id_buku`, `judul_buku`, `penulis_buku`, `penerbit_buku`, `tahun`, `genre`, `foto_buku`, `harga_buku`, `sinopsis_buku`) VALUES
+(5, 'AKU TERLANJUR', 'CINTA KEPADAMU', 'DAN TELAH KUBERIKAN', '2000-10-30', 'SELURUH HATIKU', '132033499_241037497393694_6263766216181779112_o.jpg', 100000, 'TAPI MENGAPA BARU KALI INI KAU PERTANYAAKAN, KARENA SEKALI CINTA AKU TETAP CINTA'),
+(7, 'Raha sang pahlawan', 'DUCATI', 'Raha Co.', '2000-05-22', 'Tidak ada genre', '132265328_241037527393691_6471376826591663752_o.jpg', 120000, 'Menceritakan seorang pria yang ganteng'),
+(9, 'IN THE END OF THE WORLD', 'ih dagatau', 'DAN TELAH KUBERIKAN', '1995-05-05', 'ih dakamumah', 'lalor.jpg', 375123, 'ADUHADUHADUH'),
+(10, 'wadidaw wassap', 'AWEASDAWDAWD', 'GATAU', '1995-01-05', 'Tidak ada genre', 'unnamed.jpg', 123321, 'anehdeh');
 
 -- --------------------------------------------------------
 
@@ -162,13 +173,13 @@ ALTER TABLE `pembelian_buku`
 -- AUTO_INCREMENT untuk tabel `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `pelanggan`
