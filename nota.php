@@ -112,13 +112,30 @@ Invoice
 </tr>
 </tbody>
 <?php } ?>
-</table>
+</table>							
 </div>
 <div class="row">
 <div class="col-lg-4 col-sm-5">
-
+<div class="single-widget">
+								<h2>Payments</h2>
+								<div class="content">
+									<ul>
+										<li>Transfer ke Bank RAHACOY</li>
+										<li>Nomor Rekening : 111111111111111111</li>
+										<li>Atas Nama WASSAP MA FREND</li>
+									</ul>
+								</div>
+							</div>
+							<!--/ End Order Widget -->
+							<!-- Button Widget -->
+							<div class="single-widget get-button">
+								<div class="content">
+									<div class="button">
+										<a href="index.php"><button class="btn" name="checkout">Jajan lagi mamen</button></a>
+									</div>
+								</div>
+							</div>
 </div>
-
 <div class="col-lg-4 col-sm-5 ml-auto">
 <table class="table table-clear">
 <tbody>
