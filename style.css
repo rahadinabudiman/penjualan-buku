@@ -1758,10 +1758,12 @@ Version:1.0
   position: relative;
 }
 .single-product .product-img a img {
+  height: 320px;
   width: 100%;
 }
 .single-product .product-img a img.hover-img {
   position: absolute;
+  height: 320px;
   left: 0;
   top: 0;
   z-index: 1;

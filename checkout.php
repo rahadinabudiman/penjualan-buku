@@ -312,7 +312,7 @@
                             <h2>Make Your Checkout Here</h2>
                             <p>Ayo dibaca dulu Identitasnya takut salah kan repot hehe</p>
 							<!-- Form -->
-							<form class="form" method="post" action="#">
+							<form class="form" method="POST">
 								<div class="row">
 									<div class="col-lg-6 col-md-6 col-12">
 										<div class="form-group">
@@ -333,7 +333,22 @@
 										</div>
 									</div>
 								</div>
-							</form>
+								<hr>
+								<div class="col-lg-6 col-md-6 col-12">
+										<div class="form-group">
+											<label>Jasa Pengiriman<span>*</span></label>
+											<select id="ongkir" name="ongkir" OnChange="myFunction()">
+											<option value="">Pilih Jasa Pengiriman</option>
+											<?php 
+												$data = $koneksi->query("SELECT * FROM ongkir");
+												while($ongkir = $data->fetch_assoc()){
+											?>
+												<option value="<?php echo $ongkir['id_ongkir']; ?>">Ke <?php echo $ongkir['kota']; ?> - Rp. <?php echo number_format($ongkir['tarif']); ?></option>
+												<?php } ?>
+											</select>
+										</div>
+									</div>
+							
 							<!--/ End Form -->
 						</div>
 					</div>
@@ -344,9 +359,9 @@
 								<h2>CART  TOTALS</h2>
 								<div class="content">
 									<ul>
-										<li>Sub Total<span>$330.00</span></li>
-										<li>(+) Shipping<span>$10.00</span></li>
-										<li class="last">Total<span>$340.00</span></li>
+										<li>Total Harga<span>Rp <?php echo number_format($totalbelanja); ?></span></li>
+										<li>(+) Ongkir<span id="harga-ongkir"></span></li>
+										<li class="last">Total Belanja<span>Rp <?php echo number_format($totalbelanja); ?></span></li>
 									</ul>
 								</div>
 							</div>
@@ -355,26 +370,19 @@
 							<div class="single-widget">
 								<h2>Payments</h2>
 								<div class="content">
-									<div class="checkbox">
-										<label class="checkbox-inline" for="1"><input name="updates" id="1" type="checkbox"> Check Payments</label>
-										<label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox"> Cash On Delivery</label>
-										<label class="checkbox-inline" for="3"><input name="news" id="3" type="checkbox"> PayPal</label>
-									</div>
+									<ul>
+										<li>Transfer ke Bank RAHACOY</li>
+										<li>Nomor Rekening : 111111111111111111</li>
+										<li>Atas Nama WASSAP MA FREND</li>
+									</ul>
 								</div>
 							</div>
 							<!--/ End Order Widget -->
-							<!-- Payment Method Widget -->
-							<div class="single-widget payement">
-								<div class="content">
-									<img src="images/payment-method.png" alt="#">
-								</div>
-							</div>
-							<!--/ End Payment Method Widget -->
 							<!-- Button Widget -->
 							<div class="single-widget get-button">
 								<div class="content">
 									<div class="button">
-										<a href="#" class="btn">proceed to checkout</a>
+										<button class="btn" name="checkout">proceed to checkout</button>
 									</div>
 								</div>
 							</div>
@@ -383,9 +391,43 @@
 					</div>
 				</div>
 			</div>
+			</form>
 		</section>
 		<!--/ End Checkout -->
-		
+		<?php
+			if(isset($_POST['checkout'])){
+				$id_pelanggan = $_SESSION['pelanggan']['id_pelanggan'];
+				$id_ongkir = $_POST['ongkir'];
+				date_default_timezone_set('Asia/Jakarta');
+				$tanggal_pembelian = date("Y-m-d");
+
+				$ambil = $koneksi->query("SELECT * FROM ongkir WHERE id_ongkir='$id_ongkir'");
+				$pecah =  $ambil->fetch_assoc();
+				$tarif = $pecah['tarif'];
+
+				$total_pembelian = $totalbelanja + $tarif;
+
+				// Add ke Pembelian Database
+
+				$koneksi->query("INSERT INTO pembelian
+				(id_pelanggan,id_ongkir,tanggal_pembelian,total_pembelian,tarif) VALUES ('$id_pelanggan','$id_ongkir','$tanggal_pembelian','$total_pembelian','$tarif')");
+
+				// Ngambil id_pembelian
+				 $id_pembelian = $koneksi->insert_id;
+
+				 // Seleksi mau nyimpen ke pembelian_buku
+
+				 foreach($_SESSION['keranjang'] as $id_buku => $jumlah){
+					 $koneksi->query("INSERT INTO pembelian_buku (id_pembelian,id_buku,jumlah_pembelian) VALUES ('$id_pembelian','$id_buku','$jumlah')");
+				 }
+				// Clear Keranjang
+					unset($_SESSION['keranjang']);
+
+				 echo"<script>location='nota.php?id=$id_pembelian';</script>";
+			}
+		?>
+		<pre><?php echo print_r($_SESSION['pelanggan']);?></pre>
+		<pre><?php echo print_r($_SESSION['keranjang']);?></pre>
 		<!-- Start Shop Services Area  -->
 		<section class="shop-services section home">
 			<div class="container">
@@ -546,7 +588,23 @@
 			</div>
 		</footer>
 		<!-- /End Footer Area -->
- 
+	<script>
+		function myFunction() {
+		var x = document.getElementById("ongkir").value;
+		document.getElementById("harga-ongkir").innerHTML = x;
+		}
+	</script>
+	<script type="text/javascript">
+    $(document).ready(function() {
+        $("#jumlah, #harga").keyup(function() {
+            var harga  = $("#harga").val();
+            var jumlah = $("#jumlah").val();
+
+            var total = parseInt(harga) * parseInt(jumlah);
+            $("#total").val(total);
+        });
+    });
+</script>											 
 	<!-- Jquery -->
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-migrate-3.0.0.js"></script>
