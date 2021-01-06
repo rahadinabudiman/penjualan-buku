@@ -24,6 +24,7 @@
             <th>Harga</th>
             <th>Jumlah</th>
             <th>Total Harga</th>
+            <th>Foto Buku</th>
         </tr>
     </thead>
     <?php
@@ -40,6 +41,7 @@
             <td><?php echo $data['harga_buku']; ?></td>
             <td><?php echo $data['jumlah_pembelian']; ?></td>
             <td><?php echo $data['harga_buku']*$data['jumlah_pembelian']; ?></td>
+            <td><img src="foto_buku/<?php echo $data['foto_buku']; ?>" width="100"></td>
         </tr>
         <?php $no++ ?>
         <?php } ?>

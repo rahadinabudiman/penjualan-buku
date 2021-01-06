@@ -240,6 +240,26 @@ session_start();
 			<div class="row">
 				<div class="col-12">
 					<!-- Shopping Summery -->
+					<?php if(!isset($_SESSION['keranjang'])): ?>
+					<?php $totalbelanja = 0; ?>	
+					<div class="shopping-cart section">
+					<div class="container">
+						<div class="row">
+							<div class="col-12">
+								<table class="table shopping-summery">
+									<thead>
+									<tr class="main-hading">
+										<th>Jajan Dulu Lah BOS</th>
+									</tr>
+									</thead>
+									<tbody>
+										<td>Jajan Dulu dong masukin ke keranjang</td>
+									</tbody>
+							</div>
+						</div>
+					</div>
+					</div>
+		<?php else: ?>		
 					<table class="table shopping-summery">
 						<thead>
 							<tr class="main-hading">
@@ -289,6 +309,7 @@ session_start();
                             </tr>
                             <?php $totalbelanja+=$totalharga; ?>
                             <?php endforeach ?>
+							<?php endif ?>
 						</tbody>
 					</table>
 					<!--/ End Shopping Summery -->
@@ -334,7 +355,6 @@ session_start();
 		</div>
 	</div>
 	<!--/ End Shopping Cart -->
-			
 	<!-- Start Shop Services Area  -->
 	<section class="shop-services section">
 		<div class="container">
