@@ -159,7 +159,7 @@ Invoice
 </tr>
 <tr>
 <td class="left">
-<strong>Total</strong>
+<strong>Total </strong>
 </td>
 <td class="right">
 <strong>Rp <?php echo number_format($pecah['total_pembelian']); ?></strong>
