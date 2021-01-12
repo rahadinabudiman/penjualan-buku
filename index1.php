@@ -8,7 +8,6 @@
     .carousel {
       height: 60vh;
     }
-
     @media (max-width: 740px) {
       html,
       body,
@@ -17,7 +16,6 @@
         height: 100vh;
       }
     }
-
     @media (min-width: 800px) and (max-width: 850px) {
       html,
       body,
