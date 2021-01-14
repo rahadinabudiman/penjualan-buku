@@ -393,7 +393,7 @@
 			</div>
 			</form>
 		</section>
-		<!--/ End Checkout -->
+		<!--End Checkout -->
 		<?php
 			if(isset($_POST['checkout'])){
 				$id_pelanggan = $_SESSION['pelanggan']['id_pelanggan'];
