@@ -2,7 +2,7 @@
   $ambil = $koneksi->query("SELECT * FROM pembelian JOIN pelanggan ON pembelian.id_pelanggan=pelanggan.id_pelanggan WHERE pembelian.id_pembelian='$_GET[id]'");
   $pecah = $ambil->fetch_assoc();
 ?>
-<h2>Ini Detail</h2>
+<h2>Detail Pelanggan</h2>
 <pre><?php print_r($pecah); ?></pre>
 
 <strong><?php echo $pecah['nama_pelanggan']; ?></strong><br>

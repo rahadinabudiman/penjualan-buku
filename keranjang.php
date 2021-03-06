@@ -253,7 +253,7 @@ session_start();
 									</tr>
 									</thead>
 									<tbody>
-										<td>Jajan Dulu dong masukin ke keranjang</td>
+										<td>Jajan Dulu dong bos baru masukin ke keranjang</td>
 									</tbody>
 							</div>
 						</div>
